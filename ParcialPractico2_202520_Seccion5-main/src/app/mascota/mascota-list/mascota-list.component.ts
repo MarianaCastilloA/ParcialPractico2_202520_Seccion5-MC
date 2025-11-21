@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Mascota } from '../mascota';
 import { MascotaService } from '../mascota.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-mascota-list',
@@ -14,7 +15,7 @@ export class MascotaListComponent implements OnInit {
   selected: Boolean = false;
   selectedMascota!: Mascota;
 
-  constructor(private mascotaService: MascotaService) { }
+  constructor(private mascotaService: MascotaService, private router: Router) { }
 
   ngOnInit() {
     this.getMascotas();
@@ -31,6 +32,21 @@ export class MascotaListComponent implements OnInit {
     this.selectedMascota = mascota;
   }
 
+  calculartotalmascotas(): number {
+    return this.mascotas.length;
+  }
+
+  calcularedadpromedio(): number {
+    if (this.mascotas.length === 0) {
+      return 0;
+    }
+    const totalEdad = this.mascotas.reduce((sum, mascota) => sum + mascota.edadMeses, 0);
+    return totalEdad / this.mascotas.length;
+    }
+
+    navi(id:number):void{ 
+      this.router.navigate(['/mascotas', id]);
+  }
 
 
 }

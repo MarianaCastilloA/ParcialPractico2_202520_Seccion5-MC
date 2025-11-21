@@ -5,6 +5,7 @@ export class Mascota {
   edadMeses: number;
   descripcion: string;
   imagen: string;
+  vacunas: string;
 
   constructor(
     id: number,
@@ -12,7 +13,8 @@ export class Mascota {
     especie: string,
     edadMeses: number,
     descripcion: string,
-    imagen: string
+    imagen: string,
+    vacunas: string
   ) {
     this.id = id;
     this.nombre = nombre;
@@ -20,5 +22,6 @@ export class Mascota {
     this.edadMeses = edadMeses;
     this.descripcion = descripcion;
     this.imagen = imagen;
+    this.vacunas = vacunas;
   }
 }
